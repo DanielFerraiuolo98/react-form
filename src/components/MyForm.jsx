@@ -20,12 +20,14 @@ function MyForm() {
     function handleSubmit(e) {
         e.preventDefault();
         setBlogList([...blogList, blog]);
-        setBlog(initialBlog);
+        setBlog(initialBlog); // Reset the form after submit
     }
 
     return (
         <section className="my-4">
             <h2>Work with htmlForms</h2>
+
+            {/* Form Section */}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="blogTitle" className="form-label">
@@ -38,19 +40,6 @@ function MyForm() {
                         value={blog.title}
                         onChange={handleInput}
                         name="title"
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="blogImage" className="form-label">
-                        URL immagine
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="blogImage"
-                        value={blog.image}
-                        onChange={handleInput}
-                        name="image"
                     />
                 </div>
                 <div className="mb-3">
@@ -82,10 +71,26 @@ function MyForm() {
                     Submit
                 </button>
             </form>
+
+            <div className="mt-4">
+                <h3>Lista degli Articoli</h3>
+                <ul className="list-group">
+                    {blogList.map((blogItem, index) => (
+                        <li key={index} className="list-group-item">
+                            <h5>{blogItem.title}</h5>
+                            <p>{blogItem.description}</p>
+                            {blogItem.premium && (
+                                <span className="badge bg-success">Premium</span>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </section>
     );
 }
 
 export default MyForm;
+
 
 
