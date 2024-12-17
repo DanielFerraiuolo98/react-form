@@ -56,6 +56,9 @@ function Main() {
                         <button className="btn btn-danger">Elimina</button>
                     </div>
                 </div>
+                <div>
+
+                </div>
             </main>
 
         </>
